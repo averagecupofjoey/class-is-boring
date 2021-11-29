@@ -1,6 +1,7 @@
-import { Component } from "react";
+import { Component, useContext } from "react";
 
 import ShoppingContextManager from "../IKEAVibes";
+import FunctionalComponent03 from "./03";
 
 class ClassComp06 extends Component {
     render() {
@@ -22,7 +23,13 @@ class ClassComp06 extends Component {
 }
 
 const FunctionalComponent06 = () => {
-    return null;
+    const currentContextValue = useContext(ShoppingContextManager)
+    return (
+        <div>
+            <h1>{currentContextValue.message}</h1>
+            <img src={currentContextValue.imageUrl} />
+        </div>
+    );
 };
 
-export default ClassComp06;
+export default FunctionalComponent06;

@@ -1,4 +1,5 @@
-import { Component } from "react";
+import { Component, useState } from "react";
+import FunctionalComponent01 from "./01";
 
 class ClassComp02 extends Component {
     constructor() {
@@ -20,7 +21,16 @@ class ClassComp02 extends Component {
 }
 
 const FunctionalComponent02 = () => {
-    return null;
+    const [isBored, setIsBored] = useState(false);
+    return (
+            <div>
+                <h1>{isBored ? "Yeah, I'm bored too." : "Really? Well good for you I suppose."}</h1>
+                <div>
+                    {!isBored && <button onClick={() => setIsBored(true)}>I'm Bored</button>}
+                    {isBored && <button onClick={() => setIsBored(false)}>I'm Not Bored</button>}
+                </div>
+            </div>
+        );
 };
 
-export default ClassComp02;
+export default FunctionalComponent02;

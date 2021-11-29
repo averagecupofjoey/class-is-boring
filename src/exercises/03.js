@@ -1,6 +1,7 @@
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
 
 import { oneRandomActivity } from '../bored-api';
+import FunctionalComponent02 from "./02";
 
 class ClassComp03 extends Component {
     constructor() {
@@ -23,7 +24,23 @@ class ClassComp03 extends Component {
 }
 
 const FunctionalComponent03 = () => {
-    return null;
+    const [doWhenImBored, set] = useState(null);
+
+    //to use as a componentDidMount (only render once), provide an empty array in addition to the function for useEffect VVV
+    useEffect(()=>{
+        const run = async() => {
+            const anActivity = await oneRandomActivity();
+            set(anActivity);
+        }
+        run();
+
+    }, [])
+
+    if (doWhenImBored === null) {
+            return <h2>Siiiiiiigh. Loading ...</h2>;
+        } else {
+            return <h1>{doWhenImBored}</h1>;
+        }
 };
 
-export default ClassComp03;
+export default FunctionalComponent03;
